@@ -21,14 +21,20 @@
 
 ## 打包
 
-用 package.bat (Windows) 或 package.sh (Linux) 打包。  
-打包*已经完成*。
+Windows 和 Linux 下的命令相同。打包*已经完成*。
+
+```shell
+jar cvfm sort.jar manifest.mf -C bin edu/fudan/ISort.class -C bin edu/fudan/Sort.class
+
+jar cvf quicksort.jar -C bin edu/quicksort/QuickSort.class
+jar cvf insertionsort.jar -C bin edu/insertionsort/InsertionSort.class
+``` 
 
 ## 运行
 
-需要在`sort.conf`中配置排序算法的实现类名 sortClass 以及排序算法的 jar 文件名 sortJar。
+需要在`sort.conf`中配置`plugin`为排序算法的实现类名（包含包名）。
 
-需要`quicksort.jar`、`insertionsort.jar`和`sort.jar`在同一目录下
+需要`quicksort.jar`、`insertionsort.jar`和`sort.jar`在同一目录下。
 
 ```shell
 java -jar sort.jar
@@ -37,16 +43,14 @@ java -jar sort.jar
 ## 插件
 
 `quicksort.jar`和`insertionsort.jar`是插件，  
-可以在`sort.conf`中配置排序算法的实现类名 className 为`edu.quicksort.QuickSort`或`edu.insertionsort.InsertionSort`。
+可以在`sort.conf`中配置排序算法的实现类名 plugin 为`edu.quicksort.QuickSort`或`edu.insertionsort.InsertionSort`。
 
-也可以自己实现排序算法，打包成 jar 文件，放在同一目录下；  
-并在`sort.conf`中配置排序算法的实现类名 sortClass 以及排序算法的 jar 文件名 sortJar。
+也可以自己实现排序算法，打包成 jar 文件，放在同一目录下；并在`sort.conf`中配置plugin。
 
 ### config 格式
     
 ```properties
-sortJar = quicksort.jar
-sortClass = edu.quicksort.QuickSort
+plugin = edu.quicksort.QuickSort
 ```
 
 ## 说明

@@ -4,7 +4,7 @@ import edu.fudan.ISort;
 
 public class QuickSort implements ISort {
     public int[] sort(int[] input) {
-        System.out.println("QuickSort");
+        System.out.println("Algorithm:\tQuickSort");
 
         quickSort(input, 0, input.length - 1);
 
